@@ -1,0 +1,98 @@
+<div style="text-align:center; width:100%">
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title class="card-title">{{title}} Employee</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+
+            <form class="example-form"
+                  [formGroup]='createEditForm'>
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           formControlName='name'
+                           placeholder="Name"
+                           [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="createEditForm.controls['name'].errors && createEditForm.controls['name'].errors.required">
+                        Required
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           formControlName='company'
+                           placeholder="Company"
+                           [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="createEditForm.controls['company'].errors && createEditForm.controls['company'].errors.required">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           [matDatepicker]="picker"
+                           [min]="minDate"
+                           [max]="maxDate"
+                           (dateInput)="getBirthday( $event)"
+                           placeholder="Choose your birthday"
+                           formControlName='birthday'
+                           [errorStateMatcher]="matcher"
+                           readonly='true'>
+                    <mat-datepicker-toggle matSuffix
+                                           [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker
+                                    disabled="false"></mat-datepicker>
+                    <mat-error *ngIf="createEditForm.controls['birthday'].errors && createEditForm.controls['birthday'].errors.required">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           formControlName='age'
+                           placeholder="Age (based of your birthday)"
+                           [disabled]='true'>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           placeholder="Favorite color"
+                           formControlName='favoriteColor'
+                           [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="createEditForm.controls['favoriteColor'].errors && createEditForm.controls['favoriteColor'].errors.required">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width"
+                                *ngIf="paramAction==='create'">
+                    <mat-select placeholder="Project"
+                                formControlName='project'
+                                [errorStateMatcher]="matcher">
+                        <mat-option *ngFor="let project of listProjects"
+                                    [value]="project">
+                            {{ project.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="createEditForm.controls['project'].errors && createEditForm.controls['project'].errors.required">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+            <button mat-raised-button
+                    color="primary"
+                    (click)='cancel()'>Cancel</button>
+            <button mat-raised-button
+                    color="primary"
+                    (click)='executeAction()'
+                    [disabled]="!createEditForm.valid">{{title}}</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

@@ -1,0 +1,29 @@
+.example-form {
+    min-width: 150px;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.example-card {
+    max-width: 400px;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.card-title {
+    font-size: 16px
+}
+
+.general-error {
+    background-color: #f9e2df;
+    border: 1px solid #ddb6ac;
+    color: #A71E22;
+    margin-top: 30px !important;
+    min-height: 40px;
+    padding-top: 30px;
+}

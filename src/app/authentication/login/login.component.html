@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+    <span>HR Management</span>
+</mat-toolbar>
+
+
+<div style="text-align:center; width:100%">
+
+    <div class="example-card">
+
+        <form [formGroup]='loginForm'
+              (ngSubmit)='login()'
+              class="example-form"
+              fxLayout="column">
+            <mat-form-field class="example-full-width">
+                <input matInput
+                       formControlName='user'
+                       placeholder="User">
+                <mat-error *ngIf="loginForm.controls['user'].errors && loginForm.controls['user'].errors.required">
+                    Required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput
+                       type='password'
+                       formControlName='pass'
+                       placeholder="Password">
+                <mat-error *ngIf="loginForm.controls['pass'].errors && loginForm.controls['pass'].errors.required">
+                    Required
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['pass'].errors && loginForm.controls['pass'].errors.minlength">
+                    Min 4 characters
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]='!loginForm.valid'>Ingresar</button>
+
+        </form>
+
+
+        <p>
+            Usuario: admin/1234
+        </p>
+
+
+    </div>
+
+</div>

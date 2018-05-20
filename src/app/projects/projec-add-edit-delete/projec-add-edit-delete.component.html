@@ -1,0 +1,65 @@
+<div style="text-align:center; width:100%">
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title class="card-title">{{title}} Project</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+
+            <div *ngIf="paramAction==='delete' && createEditDeleteForm.controls['teamSize'].value >0"
+                 class="general-error">
+                cannot delete due to employee is working on this proyect
+            </div>
+
+            <form class="example-form"
+                  [formGroup]='createEditDeleteForm'>
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           formControlName='name'
+                           placeholder="Name"
+                           [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="createEditDeleteForm.controls['name'].errors && createEditDeleteForm.controls['name'].errors.required">
+                        Required
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           formControlName='teamSize'
+                           placeholder="Team size (updated automatically)"
+                           [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="createEditDeleteForm.controls['teamSize'].errors && createEditDeleteForm.controls['teamSize'].errors.required">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           formControlName='clientName'
+                           placeholder="Client name"
+                           [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="createEditDeleteForm.controls['clientName'].errors && createEditDeleteForm.controls['clientName'].errors.required">
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+            <button mat-raised-button
+                    color="primary"
+                    (click)='cancel()'>Cancel</button>
+            <button mat-raised-button
+                    color="primary"
+                    (click)='executeAction()'
+                    [disabled]="!createEditDeleteForm.valid || createEditDeleteForm.controls['teamSize'].value >0">{{title}}</button>
+
+        </mat-card-actions>
+
+    </mat-card>
+
+</div>

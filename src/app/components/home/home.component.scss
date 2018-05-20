@@ -1,0 +1,16 @@
+.example-card {
+    width: 150px;
+    height: 150px;
+    margin: 40px;
+    text-align: center;
+}
+
+$icon_size:72px;
+.material-icons {
+    font-size: $icon_size;
+}
+
+.mat-icon {
+    width: $icon_size;
+    height: $icon_size;
+}
