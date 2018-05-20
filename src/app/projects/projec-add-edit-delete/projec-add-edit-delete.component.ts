@@ -32,7 +32,7 @@ export class ProjecAddEditDeleteComponent implements OnInit {
 	) {
 		this.createEditDeleteForm = this.formBuilder.group({
 			name: [ '', [ Validators.required ] ],
-			teamSize: [ { value: '', disabled: true }, [ Validators.required ] ],
+			teamSize: [ { value: '', disabled: true }, [] ],
 			clientName: [ '', [ Validators.required ] ]
 		});
 

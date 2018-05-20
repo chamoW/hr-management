@@ -9,7 +9,7 @@
 
             <div *ngIf="paramAction==='delete' && createEditDeleteForm.controls['teamSize'].value >0"
                  class="general-error">
-                cannot delete due to employee is working on this proyect
+                cannot delete due to employee is working on this project
             </div>
 
             <form class="example-form"
@@ -56,7 +56,7 @@
             <button mat-raised-button
                     color="primary"
                     (click)='executeAction()'
-                    [disabled]="!createEditDeleteForm.valid || createEditDeleteForm.controls['teamSize'].value >0">{{title}}</button>
+                    [disabled]="!createEditDeleteForm.valid || (paramAction === 'delete' &&createEditDeleteForm.controls['teamSize'].value >0)">{{title}}</button>
 
         </mat-card-actions>
 
